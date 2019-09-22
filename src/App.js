@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+//import other
+import { UserContext } from './platform/contexts/Contexts'
+
+//import all the screens
+import Login from "./platform/screens/Login";
 
 function App() {
+  const [accessToken, setAccessToken] = useState();
+  const [userData, setUserData] = useState();
+
+  const isLoggedIn = accessToken && userData;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserContext.Provider
+        value={{
+          accessToken: accessToken,
+          userData: userData,
+          setAccessTokenAndUserData: (accessToken,userData) => {
+            setAccessToken(accessToken)
+            setUserData(userData)
+          }
+        }}
+      >
+        {!isLoggedIn ? <Login /> : <p>welcome {userData.name}</p>}
+      </UserContext.Provider>
     </div>
   );
 }
