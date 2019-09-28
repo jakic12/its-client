@@ -154,7 +154,7 @@ function LoginCard(props) {
                     <input type="submit" value="login" />
                   </SpringSubmitButton>
                   <SpringSubmitButton>
-                    <button>register</button>
+                    <button type="button">register</button>
                   </SpringSubmitButton>
                 </animated.div>
               );
