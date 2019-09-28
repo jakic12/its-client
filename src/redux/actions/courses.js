@@ -1,4 +1,3 @@
-//ab
 import { host } from "../../app.json";
 
 export const FETCH_COURSES_REQUEST = "FETCH_COURSES_REQUEST";
