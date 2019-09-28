@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { fetchCourses } from '../redux/actions/courses'
 
 //styles
-import "../scss/Dash.scss";
+import "../scss/screens/Dash.scss";
 
 //components
 import ProjectCard, { ProjectCardContainer } from "../components/ProjectCard";

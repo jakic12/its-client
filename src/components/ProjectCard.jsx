@@ -1,5 +1,5 @@
 import React from "react";
-import "../scss/ProjectCard.scss";
+import "../scss/components/ProjectCard.scss";
 
 import { NavLink } from 'react-router-dom';
 

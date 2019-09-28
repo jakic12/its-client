@@ -6,6 +6,8 @@ import { BrowserRouter, Route } from 'react-router-dom'
 //import all the screens
 import Dash from './screens/Dash'
 
+import Login from './screens/Login' // test import
+
 function Router() {
   console.log(`%c   /$$   /$$  /$$$$$$  /$$    /$$ /$$$$$$$$       /$$$$$$$$ /$$   /$$ /$$   /$$
   | $$  | $$ /$$__  $$| $$   | $$| $$_____/      | $$_____/| $$  | $$| $$$ | $$
@@ -18,7 +20,7 @@ function Router() {
                                                                                `, 'color: cyan')
   return (
     <BrowserRouter>
-      <Route path="/" component={Dash} />
+      <Route path="/" component={Login} />
     </BrowserRouter>
   );
 }
