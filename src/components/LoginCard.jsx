@@ -47,16 +47,12 @@ const loginFieldsArray = [
 
 function LoginCard(props) {
   const [loginFields, setLoginFields] = useState({});
-  const [canFocus, setCanFocus] = useState(true); // don't allow focusing more than once
-  const [needToFocus, setNeedToFocus] = useState(false); // check if focusing the autofocus ref is needed
   const [cardOpen, setCardOpen] = useState(true);
   const [sendLoginRequest, setSendLoginRequest] = useState(false);
   const [upperLeft, setUpperLeft] = useState(false);
 
   if(!upperLeft && !cardOpen && props.loggedIn){
     setUpperLeft(true)
-    autoFocusRef.current.focus();
-    setCanFocus(false);
   }
 
   const centered = { marginTop:`50vh`, marginLeft:`50vw`, transform:`translate(-50%, -50%)`, border: `10px`};
@@ -67,6 +63,7 @@ function LoginCard(props) {
     delay:500,
     onRest:() => {
       if(props.onLoginComplete && !cardOpen && props.loggedIn){
+        debugger;
         props.onLoginComplete();
       }
     }
@@ -89,7 +86,6 @@ function LoginCard(props) {
     delay: 500,
     config: cardOpen ? config.wobbly : config.slow,
     onRest: () => {
-      setNeedToFocus(true);
       if (sendLoginRequest) props.login(loginFields);
 			setSendLoginRequest(false);
 			setErrorDivCloseOverride(false);
@@ -118,7 +114,6 @@ function LoginCard(props) {
   );
 
 	const [errorDivOpen, setErrorDivOpen] = useState(false);
-	const [errorCanFocusSent, setErrorCanFocusSent] = useState(false); // if canFocus has already been sent
 	const [errorDivCloseOverride, setErrorDivCloseOverride] = useState(false); // "manual" override, so errorDiv can't reopen
   const state1 = { height: `0px` };
   const state2 = { height: `100px` };
@@ -130,10 +125,6 @@ function LoginCard(props) {
   if (!errorDivCloseOverride && !errorDivOpen && props.error) {
 		setErrorDivOpen(true);
 		setCardOpen(true);
-		if(!errorCanFocusSent){
-			setCanFocus(true);
-			setErrorCanFocusSent(true);
-  }
   }
 
   return (
@@ -185,7 +176,7 @@ function LoginCard(props) {
                     <div className="inputField">
                       <input
                         {...(field.autoFocus
-                          ? { ref: autoFocusRef, id: `testIF` }
+                          ? { id: `testIF`, autoFocus:true }
                           : {})}
                         type={field.inputType || "text"}
                         placeholder={field.placeholder}
