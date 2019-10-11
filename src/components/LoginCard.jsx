@@ -51,12 +51,26 @@ function LoginCard(props) {
   const [needToFocus, setNeedToFocus] = useState(false); // check if focusing the autofocus ref is needed
   const [cardOpen, setCardOpen] = useState(true);
   const [sendLoginRequest, setSendLoginRequest] = useState(false);
+  const [upperLeft, setUpperLeft] = useState(false);
 
-  const autoFocusRef = useRef();
-  if (canFocus && needToFocus && autoFocusRef && autoFocusRef.current) {
+  if(!upperLeft && !cardOpen && props.loggedIn){
+    setUpperLeft(true)
     autoFocusRef.current.focus();
     setCanFocus(false);
   }
+
+  const centered = { marginTop:`50vh`, marginLeft:`50vw`, transform:`translate(-50%, -50%)`, border: `10px`};
+  const leftUp = { marginTop:`0%`, marginLeft:`0%`, transform:`translate(0%, 0%)`, border: `0px`}
+  const {border: cardHeaderBorder, ...flyUpperRight } = useSpring({
+    from: centered,
+    to: upperLeft? leftUp : centered,
+    delay:500,
+    onRest:() => {
+      if(props.onLoginComplete && !cardOpen && props.loggedIn){
+        props.onLoginComplete();
+      }
+    }
+  })
 
   // function to set field data
   const setField = (field, data) => {
@@ -119,21 +133,24 @@ function LoginCard(props) {
 		if(!errorCanFocusSent){
 			setCanFocus(true);
 			setErrorCanFocusSent(true);
-		}
+  }
   }
 
   return (
-    <div className="loginCard">
-      <div className="cardHeader">
+    <animated.div className="loginCard" style={flyUpperRight}>
+      <animated.div className="cardHeader" style={{
+        borderTopLeftRadius:cardHeaderBorder,
+        borderTopRightRadius:cardHeaderBorder,
+      }}>
         <div className="cardTitle">
           <img
             src={rd_icon}
             alt="rd icon"
             className={props.isLoading ? "spin" : ""}
           />
-          <h1>{!props.loggedIn && `ITS`}{props.loggedIn && `welcome ${props.loggedIn}`}</h1>
+          <h1>ITS</h1>
         </div>
-      </div>
+      </animated.div>
       <animated.div className="cardBody" style={openBody}>
         <form
           {...bindMeasure} // set measurer, to measure this element
@@ -185,13 +202,13 @@ function LoginCard(props) {
           })}
         </form>
       </animated.div>
-      <div className="cardFooter"></div>
+      <animated.div className="cardFooter" style={{borderBottomLeftRadius:cardHeaderBorder}}></animated.div>
       <animated.div className="errorDivContainer" style={displayErrorDiv}>
         <div className="errorDiv">
           <div className="errorDivText">{props.error}</div>
         </div>
       </animated.div>
-    </div>
+    </animated.div>
   );
 }
 
