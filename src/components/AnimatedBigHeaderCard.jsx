@@ -37,6 +37,7 @@ export const AnimatedBigHeaderCardControls = createContext();
  * @param {boolean} compactMode if this is true, the card will not render the body, error and will not apply springs
  * @param {boolean} errorCloseOverride close the error div, even if error isn't empty
  * @param {String} bodyPadding padding for the body of the card (useful for animating the padding when the card opens)
+ * @param {Object} customOpenBodyAnimationProps add custom props to the body opening animation spring
  */
 const AnimatedBigHeaderCard = ({
   cardOpen,
@@ -45,7 +46,8 @@ const AnimatedBigHeaderCard = ({
   error,
   compactMode = false,
   errorCloseOverride = false,
-  bodyPadding = `30px`
+  bodyPadding = `30px`,
+  customOpenBodyAnimationProps = {}
 }) => {
   // To measure the height of the body when open
   const [bindMeasure, formBounds] = useMeasure();
@@ -59,11 +61,11 @@ const AnimatedBigHeaderCard = ({
   };
   const cardClosedStyle = { height: `0px`, padding: `0px` };
   const openBody = useSpring({
-    //ref: openBodyRef,
     from: cardClosedStyle,
     to: (cardOpen && !cardOpenOverride) ? cardOpenStyle : cardClosedStyle,
     delay: 500,
-    config: (cardOpen && !cardOpenOverride) ? config.wobbly : config.slow
+    config: (cardOpen && !cardOpenOverride) ? config.wobbly : config.slow,
+    ...customOpenBodyAnimationProps
   });
 
   // Animation for showing the errorDiv
@@ -73,7 +75,7 @@ const AnimatedBigHeaderCard = ({
   const displayErrorDiv = useSpring({
     from: errorDivClosedStyle,
     to:
-      error && !errorDivCloseOverride ? errorDivOpenStyle : errorDivClosedStyle
+      error && (!errorDivCloseOverride && !errorCloseOverride) ? errorDivOpenStyle : errorDivClosedStyle
   });
   return (
     <AnimatedBigHeaderCardControls.Provider
