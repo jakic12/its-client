@@ -6,7 +6,7 @@ import { Redirect, Route } from "react-router-dom";
 
 const PrivateRoute = ({
   component: Component,
-  isLoggedIn,
+  loggedIn,
   redirectTo,
   ...rest
 }) => {
@@ -14,7 +14,7 @@ const PrivateRoute = ({
     <Route
       {...rest}
       render={props =>
-        isLoggedIn ? (
+        loggedIn ? (
           <Component {...props} />
         ) : (
           <Redirect
@@ -31,7 +31,7 @@ const PrivateRoute = ({
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.login.isLoggedIn
+    loggedIn: state.login.loggedIn
   };
 };
 
