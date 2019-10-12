@@ -1,15 +1,59 @@
-import React from "react";
-import { BrowserRouter, Route } from 'react-router-dom'
+import React, { useState } from "react";
 
-//import other
+// import external libs
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-//import all the screens
-import Dash from './screens/Dash'
+// import scss
+import "./scss/screens/Router.scss";
 
-import Login from './screens/Login' // test import
+// import components
+import PrivateRoute from "./components/PrivateRoute";
+import LoginRegisterForm from "./components/LoginRegisterForm";
 
-function Router() {
-  console.log(`%c   /$$   /$$  /$$$$$$  /$$    /$$ /$$$$$$$$       /$$$$$$$$ /$$   /$$ /$$   /$$
+// import all the screens
+import Dash from "./screens/Dash";
+
+//import Login from './screens/Login'; // test import
+
+/**
+ * Top level Components that joins together the sidebar and all other screens
+ * ========= ROUTER ==========
+ * |== SIDE == == screens ===|
+ * |         | |             |
+ * |         | |             |
+ * |         | |             |
+ * ===========================
+ */
+const Router = ({ loggedIn }) => {
+  console.log(loggedIn);
+
+  return (
+    <BrowserRouter>
+      <div className="routerWrapper">
+        <div className="loginForm">
+          <LoginRegisterForm compactMode={!loggedIn} />
+          {loggedIn && (
+            <Route path="/login" exact={true} component={
+              props => <Redirect to="/"/>
+            }/>
+          )}
+        </div>
+        <PrivateRoute path={"/"} exact={true} component={Dash} />
+      </div>
+    </BrowserRouter>
+  );
+};
+
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.login.loggedIn
+  };
+};
+
+function consoleHeader() {
+  console.log(
+    `%c   /$$   /$$  /$$$$$$  /$$    /$$ /$$$$$$$$       /$$$$$$$$ /$$   /$$ /$$   /$$
   | $$  | $$ /$$__  $$| $$   | $$| $$_____/      | $$_____/| $$  | $$| $$$ | $$
   | $$  | $$| $$  \\ $$| $$   | $$| $$            | $$      | $$  | $$| $$$$| $$
   | $$$$$$$$| $$$$$$$$|  $$ / $$/| $$$$$         | $$$$$   | $$  | $$| $$ $$ $$
@@ -17,12 +61,9 @@ function Router() {
   | $$  | $$| $$  | $$  \\  $$$/  | $$            | $$      | $$  | $$| $$\\  $$$
   | $$  | $$| $$  | $$   \\  $/   | $$$$$$$$      | $$      |  $$$$$$/| $$ \\  $$
   |__/  |__/|__/  |__/    \\_/    |________/      |__/       \\______/ |__/  \\__/
-                                                                               `, 'color: cyan')
-  return (
-    <BrowserRouter>
-      <Route path="/" component={Login} />
-    </BrowserRouter>
+                                                                               `,
+    "color: cyan"
   );
 }
 
-export default Router;
+export default connect(mapStateToProps)(Router);
