@@ -32,7 +32,7 @@ const Router = ({ loggedIn }) => {
     <BrowserRouter>
       <div className="routerWrapper">
         <div className="loginForm">
-          <LoginRegisterForm compactMode={!loggedIn} />
+          <LoginRegisterForm compactMode={loggedIn} />
           {loggedIn && (
             <Route path="/login" exact={true} component={
               props => <Redirect to="/"/>
