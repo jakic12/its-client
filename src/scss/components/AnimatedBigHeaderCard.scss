@@ -1,0 +1,54 @@
+.loginCard {
+  box-shadow: 0px 0px 15px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  width: 400px;
+  .cardHeader {
+    padding: 30px 30px 10px 30px;
+    background: white;
+    display: flex;
+		border-radius: 10px 10px 0 0;
+		position:relative; // for z-index
+		z-index: 3;
+    .cardTitle {
+      display: inline-block;
+    }
+  }
+
+  .cardBody {
+    overflow: hidden;
+    background: lightGrey;
+    display: flex;
+    flex-direction: column;
+    .innerBodyElement {
+
+    }
+  }
+
+  .cardFooter {
+    background: white;
+    height: 20px;
+		border-radius: 0 0 10px 10px;
+		transform-style: preserve-3d;
+		z-index: 2;
+	}
+	
+	.errorDivContainer{
+		background:lightGrey;
+		margin-top:-10px;
+		border-radius: 0 0 10px 10px;
+		width:100%;
+		z-index: 1;
+		padding-top:10px;
+		box-sizing: border-box;
+		.errorDiv{
+			display:flex;
+			flex-direction: column;
+			justify-content: center;
+			height:100%;
+			overflow: hidden;
+			.errorDivText{
+				margin:0 auto;
+			}
+		}
+	}
+}
