@@ -47,7 +47,8 @@ const AnimatedBigHeaderCard = ({
   compactMode = false,
   errorCloseOverride = false,
   bodyPadding = `30px`,
-  customOpenBodyAnimationProps = {}
+  customOpenBodyAnimationProps = {},
+  width = `400px`
 }) => {
   // To measure the height of the body when open
   const [bindMeasure, formBounds] = useMeasure();
@@ -86,7 +87,7 @@ const AnimatedBigHeaderCard = ({
         toggleError:() => setErrorDivCloseOverride(!errorDivCloseOverride)
       }}
     >
-      <animated.div className="loginCard">
+      <animated.div className="loginCard" style={{width:width}}>
         <animated.div className="cardHeader">
           <div className="cardTitle">{head}</div>
         </animated.div>

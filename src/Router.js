@@ -7,12 +7,17 @@ import { connect } from "react-redux";
 // import scss
 import "./scss/screens/Router.scss";
 
+// import actions
+import { fetchLogout } from './redux/actions/login';
+
 // import components
 import PrivateRoute from "./components/PrivateRoute";
 import LoginRegisterForm from "./components/LoginRegisterForm";
+import Sidebar from "./components/Sidebar";
 
 // import all the screens
 import Dash from "./screens/Dash";
+import SpringSubmitButton from "./components/SpringSubmitButton";
 
 //import Login from './screens/Login'; // test import
 
@@ -25,20 +30,30 @@ import Dash from "./screens/Dash";
  * |         | |             |
  * ===========================
  */
-const Router = ({ loggedIn }) => {
+const Router = ({ loggedIn, logout }) => {
   console.log(loggedIn);
-
   return (
     <BrowserRouter>
       <div className="routerWrapper">
-        <div className="loginForm">
-          <LoginRegisterForm compactMode={loggedIn} />
+          <Sidebar 
+            hide={!loggedIn}
+            title={<>
+              <div className="emptyLoginCard"></div>
+              <div className={`loginForm ${loggedIn?``:`open`}`}>
+                  <LoginRegisterForm compactMode={loggedIn} width={loggedIn?`300px` : undefined}/>
+              </div>
+            </>
+            }
+            body={<div></div>}
+            footer={<SpringSubmitButton>
+              <button onClick={() => logout()}>Log out</button>
+            </SpringSubmitButton>}
+          />
           {loggedIn && (
             <Route path="/login" exact={true} component={
               props => <Redirect to="/"/>
             }/>
           )}
-        </div>
         <PrivateRoute path={"/"} exact={true} component={Dash} />
       </div>
     </BrowserRouter>
@@ -50,6 +65,12 @@ const mapStateToProps = state => {
     loggedIn: state.login.loggedIn
   };
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout:() => { dispatch(fetchLogout(dispatch)) }
+  }
+}
 
 function consoleHeader() {
   console.log(
@@ -66,4 +87,4 @@ function consoleHeader() {
   );
 }
 
-export default connect(mapStateToProps)(Router);
+export default connect(mapStateToProps, mapDispatchToProps)(Router);

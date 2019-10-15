@@ -1,13 +1,18 @@
 import {
     LOGIN_SUBMIT,
     LOGIN_ERROR,
-    LOGIN_SUCCESS 
+    LOGIN_SUCCESS, 
+    LOGOUT_SUBMIT,
+    LOGOUT_ERROR,
+    LOGOUT_SUCCESS
 } from '../actions/login'
 
 const initialState = {
     error:null,
     isLoading: false,
-    loggedIn:false
+    loggedIn:true,
+    isLogoutLoading:false,
+    logoutError:null,
 }
 
 export default (state = initialState, action) => {
@@ -28,6 +33,21 @@ export default (state = initialState, action) => {
             return Object.assign({}, state, {
                 isLoading:false,
                 loggedIn:action.data.username
+            })
+        case LOGOUT_SUBMIT:
+            return Object.assign({}, state, {
+                logoutError:null,
+                isLogoutLoading:true
+            })
+        case LOGOUT_ERROR:
+            return Object.assign({}, state, {
+                isLogoutLoading:false,
+                logoutError:action.error
+            })
+        case LOGOUT_SUCCESS:
+            return Object.assign({}, state, {
+                isLogoutLoading:false,
+                loggedIn:false
             })
         default:
             return state

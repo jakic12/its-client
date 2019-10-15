@@ -34,16 +34,34 @@
   height:100vh;
   width:100vw;
   overflow:hidden;
+}
 
-  .loginForm{
-    height:100vh;
-    width:100vw;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    
-    .loginRegisterForm{
-      margin: 0 auto;
+.loginForm.open{
+  height:100vh;
+  width:100vw;
+  .loginRegisterForm{
+    margin:50vh 0 0 50vw;
+    transform: translate(calc(-50% + 300px), -50%);
+  }
+}
+
+.loginForm{
+  .loginRegisterForm{
+    transition:1s transform 1s,1s margin 1s;
+  }
+
+  .loginCard{
+    transition:0.3s width, 0.5s box-shadow 2s;
+  }
+}
+
+.loginForm:not(.open){
+  .loginRegisterForm{
+    margin:0;
+    transform: translate(0);
+
+    .loginCard{
+      box-shadow:none !important;
     }
   }
 }

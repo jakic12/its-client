@@ -23,7 +23,7 @@ import "../scss/components/LoginRegisterForm.scss";
 import rd_icon from "../res/img/rd.png";
 import { MdVpnKey, MdPerson } from "react-icons/md";
 
-const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode }) => {
+const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, width }) => {
   const [firstTime, setFirstTime] = useState(true);
   const [formAnimationsFinished, setFormAnimationsFinished] = useState(false);
   const [bodyAnimationsFinished, setBodyAnimationsFinished] = useState(false);
@@ -120,6 +120,7 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode }) =
           className={isLoading ? "spinner" : ""}
         />
         <h1>ITS</h1></div>}
+        width={width}
         body={
           <AnimatedBigHeaderCardControls.Consumer>
             {({ toggleCard }) => (
