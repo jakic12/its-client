@@ -61,6 +61,6 @@ export const fetchLogout = dispatch => {
   dispatch(logout());
   setTimeout(() => {
     // TODO: replace this with an api request
-    logoutSuccess();
+    dispatch(logoutSuccess());
   }, Math.random() * 10000);
 };

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 // import external libs
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // import scss
 import "./scss/screens/Router.scss";
 
 // import actions
-import { fetchLogout } from "./redux/actions/login";
+import { logoutSuccess } from "./redux/actions/login";
 
 // import components
 import PrivateRoute from "./components/PrivateRoute";
@@ -17,9 +17,16 @@ import Sidebar from "./components/Sidebar";
 
 // import all the screens
 import Dash from "./screens/Dash";
-import SpringSubmitButton from "./components/SpringSubmitButton";
+import ClickableList, { ListItem } from "./components/ClickableList";
 
-//import Login from './screens/Login'; // test import
+// import resources
+import { MdHome, MdToday, MdPerson } from "react-icons/md";
+
+const screens = [
+  ListItem(`Dashboard`, `dash`, <MdHome />),
+  ListItem(`Calendar`, `calendar`, <MdToday />),
+  ListItem(`Profile`, `profile`, <MdPerson />)
+];
 
 /**
  * Top level Components that joins together the sidebar and all other screens
@@ -31,7 +38,8 @@ import SpringSubmitButton from "./components/SpringSubmitButton";
  * ===========================
  */
 const Router = ({ loggedIn, logout }) => {
-  console.log(loggedIn);
+  const screen = window.location.pathname.match(/[/]?([^/]*)(\/|$)/)[1];
+  console.log(screen);
   return (
     <BrowserRouter>
       <div className="routerWrapper">
@@ -48,19 +56,38 @@ const Router = ({ loggedIn, logout }) => {
               </div>
             </>
           }
-          body={<div></div>}
+          body={
+            <ClickableList
+              routerMode={true}
+              items={screens}
+              ItemComponent={Link}
+              mapItemPropToComponent={item => ({
+                to: `/` + item.urlName,
+                style: { textDecoration: `none` }
+              })}
+            />
+          }
           footer={
-            <SpringSubmitButton>
-              <button onClick={() => logout()}>Log out</button>
-            </SpringSubmitButton>
+            <div className="logoutButtonWrapper">
+              <button onClick={() => logout()} className="logoutButton">
+                Log out
+              </button>
+            </div>
           }
         />
         {loggedIn && (
-          <Route
-            path="/login"
-            exact={true}
-            component={props => <Redirect to="/" />}
-          />
+          <>
+            <Route
+              path="/login"
+              exact={true}
+              component={props => <Redirect to="/" />}
+            />
+            <Route
+              path="/"
+              exact={true}
+              component={props => <Redirect to={`/${screens[0].urlName}`} />}
+            />
+          </>
         )}
         <PrivateRoute path={"/"} exact={true} component={Dash} />
       </div>
@@ -77,7 +104,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
-      dispatch(fetchLogout(dispatch));
+      dispatch(logoutSuccess());
     }
   };
 };

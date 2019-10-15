@@ -1,0 +1,37 @@
+.clickableList {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+
+  .item {
+    padding: 10px;
+    border-radius: 8px;
+    transition: box-shadow 0.2s;
+    color: black;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      cursor: pointer;
+    }
+
+    .icon {
+      width: 2;
+      padding: 5px 10px;
+    }
+
+    .label {
+    }
+  }
+  .item.selected {
+    background: rgb(0, 0, 0);
+    color: white;
+  }
+}

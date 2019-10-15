@@ -15,6 +15,7 @@
 
     .body {
       flex: 1 1 auto;
+      margin: 10px 0px;
     }
 
     .footer {
@@ -24,4 +25,5 @@
 
 .sidebar.hidden {
   transform: translate(-100%);
+  transition: 1s transform 1s;
 }

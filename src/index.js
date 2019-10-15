@@ -4,19 +4,28 @@ import "./index.css";
 import Router from "./Router";
 import * as serviceWorker from "./serviceWorker";
 
+// react notifications
+import { Provider as AlertProvider } from "react-alert";
+
 //redux
 import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import logger from "redux-logger";
 
 //reducer
 import rootReducer from "./redux/reducers";
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(logger))
+);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router />
+  <Provider store={store}>
+    <AlertProvider template={<div></div>}>
+      <Router />
+    </AlertProvider>
   </Provider>,
   document.getElementById("root")
 );

@@ -63,15 +63,16 @@
   overflow: hidden;
 }
 
+// sidebar login animation
 .loginForm.open {
   height: 100vh;
   width: 100vw;
   .loginRegisterForm {
     margin: 50vh 0 0 50vw;
     transform: translate(calc(-50% + 300px), -50%);
+    transition: transform 1s, margin 1s;
   }
 }
-
 .loginForm {
   .loginRegisterForm {
     transition: 1s transform 1s, 1s margin 1s;
@@ -81,7 +82,6 @@
     transition: 0.3s width, 0.5s box-shadow 2s;
   }
 }
-
 .loginForm:not(.open) {
   .loginRegisterForm {
     margin: 0;
@@ -89,6 +89,31 @@
 
     .loginCard {
       box-shadow: none !important;
+    }
+  }
+}
+.sidebar {
+  .footer {
+    .logoutButtonWrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .logoutButton {
+        flex: 1 1 auto;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        border: none;
+        padding: 0.5em;
+        border-radius: 8px;
+        color: black;
+        transition: box-shadow 0.2s;
+
+        &:hover {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+            0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+      }
     }
   }
 }
