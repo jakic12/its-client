@@ -4,10 +4,10 @@ $category-height: 30px;
 
 .projectCardContainer {
   display: flex;
-	flex-direction: row;
-	@media screen and (max-width: #{$card-width*2}){
-		flex-direction: column;
-	}
+  flex-direction: row;
+  @media screen and (max-width: #{$card-width*2}) {
+    flex-direction: column;
+  }
   flex-wrap: wrap;
   justify-content: start;
 
@@ -31,7 +31,7 @@ $category-height: 30px;
 
       color: black;
       text-decoration: none;
-      display:block;
+      display: block;
 
       &:hover {
         /*height:calc(100% - 20px);
@@ -76,15 +76,19 @@ $category-height: 30px;
         }
         .categories {
           display: flex;
-					height: $category-height;
-					mask-image: linear-gradient(to right, white calc(100% - 20px), rgba(255,255,255,0) 100%);
+          height: $category-height;
+          mask-image: linear-gradient(
+            to right,
+            white calc(100% - 20px),
+            rgba(255, 255, 255, 0) 100%
+          );
 
           .category {
             padding: 2px 10px;
             text-align: center;
             background: lightGrey;
-						border-radius: 5px;
-						white-space: nowrap;
+            border-radius: 5px;
+            white-space: nowrap;
             &:not(:first-child) {
               margin-left: 10px;
             }

@@ -23,7 +23,12 @@ import { fetchLogin } from "../redux/actions/login";
  * @param {Function} onSubmit function to be called when the form submits
  * @param {Object} customTransitionProps custom props to be passed to the transition
  */
-const AnimatedForm = ({ display = true, formFieldsArray, onSubmit, customTransitionProps={} }) => {
+const AnimatedForm = ({
+  display = true,
+  formFieldsArray,
+  onSubmit,
+  customTransitionProps = {}
+}) => {
   const [formFields, setFormFields] = useState({}); // hook to hold the input field data
 
   // Transition for the fields
@@ -51,13 +56,14 @@ const AnimatedForm = ({ display = true, formFieldsArray, onSubmit, customTransit
       onSubmit={e => {
         e.preventDefault();
         if (onSubmit) onSubmit(formFields);
-      }}
-    >
+      }}>
       {displayFields.map(({ item, key, props }) => {
         const field = item;
         if (field.customField) {
           return (
-            <animated.div key={key} /*className={field.wrapperClassName}*/ style={props}>
+            <animated.div
+              key={key}
+              /*className={field.wrapperClassName}*/ style={props}>
               {field.render()}
             </animated.div>
           );
@@ -65,9 +71,7 @@ const AnimatedForm = ({ display = true, formFieldsArray, onSubmit, customTransit
           return (
             <animated.div className="formField" key={key} style={props}>
               <div className="fieldBody">
-                <div className="icon">
-                  {field.icon && <field.icon />}
-                </div>
+                <div className="icon">{field.icon && <field.icon />}</div>
                 <div className="inputField">
                   <input
                     {...(field.autoFocus ? { autoFocus: true } : {})}
@@ -99,8 +103,8 @@ export function FormField(name, placeholder, inputType, icon, autoFocus) {
 }
 
 export function CustomFormField(name, render) {
-  if(!typeof render === `function`)
-    throw new Error(`render should be a function`)
+  if (!typeof render === `function`)
+    throw new Error(`render should be a function`);
 
   return {
     name,

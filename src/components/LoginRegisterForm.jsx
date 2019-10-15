@@ -23,7 +23,14 @@ import "../scss/components/LoginRegisterForm.scss";
 import rd_icon from "../res/img/rd.png";
 import { MdVpnKey, MdPerson } from "react-icons/md";
 
-const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, width }) => {
+const LoginRegisterForm = ({
+  login,
+  isLoading,
+  error,
+  loggedIn,
+  compactMode,
+  width
+}) => {
   const [firstTime, setFirstTime] = useState(true);
   const [formAnimationsFinished, setFormAnimationsFinished] = useState(false);
   const [bodyAnimationsFinished, setBodyAnimationsFinished] = useState(false);
@@ -33,22 +40,29 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, wid
   const [loginData, setLoginData] = useState();
   const [registerData, setRegisterData] = useState();
 
-  if((loginData || registerData) && bodyAnimationsFinished && formAnimationsFinished && !isLoading && !loggedIn){
-    if(registerData)
-      console.log(registerData)
-      // TODO: create register action
-      // register(registerData)
-    else{
+  if (
+    (loginData || registerData) &&
+    bodyAnimationsFinished &&
+    formAnimationsFinished &&
+    !isLoading &&
+    !loggedIn
+  ) {
+    if (registerData) console.log(registerData);
+    // TODO: create register action
+    // register(registerData)
+    else {
       login(loginData);
       setLoginData(null);
     }
   }
 
-  const cardOpen = compactMode? false : !loggedIn && !isLoading && !transition && !loginData && !registerData;
+  const cardOpen = compactMode
+    ? false
+    : !loggedIn && !isLoading && !transition && !loginData && !registerData;
   const cardBodyAnimation = useRef();
   const formTransitionAnimation = useRef();
 
-  if(!compactMode){
+  if (!compactMode) {
     var loginFormFieldsArray = [
       FormField(`username`, `username`, `text`, MdPerson, true),
       FormField(`password`, `password`, `password`, MdVpnKey),
@@ -63,8 +77,7 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, wid
               onClick={() => {
                 setRegister(true);
                 setTransition(true);
-              }}
-            >
+              }}>
               register
             </button>
           </SpringSubmitButton>
@@ -90,8 +103,7 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, wid
               onClick={() => {
                 setRegister(false);
                 setTransition(true);
-              }}
-            >
+              }}>
               login
             </button>
           </SpringSubmitButton>
@@ -111,15 +123,20 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, wid
     <div className="loginRegisterForm">
       <AnimatedBigHeaderCard
         compactMode={
-          (loggedIn && formAnimationsFinished && bodyAnimationsFinished) || compactMode
+          (loggedIn && formAnimationsFinished && bodyAnimationsFinished) ||
+          compactMode
         }
         cardOpen={cardOpen}
-        head={<div className="title"><img
-          src={rd_icon}
-          alt="rd icon"
-          className={isLoading ? "spinner" : ""}
-        />
-        <h1>ITS</h1></div>}
+        head={
+          <div className="title">
+            <img
+              src={rd_icon}
+              alt="rd icon"
+              className={isLoading ? "spinner" : ""}
+            />
+            <h1>ITS</h1>
+          </div>
+        }
         width={width}
         body={
           <AnimatedBigHeaderCardControls.Consumer>
@@ -140,9 +157,9 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, wid
                 onSubmit={data => {
                   setFormAnimationsFinished(false);
                   setBodyAnimationsFinished(false);
-                  if(register){
-                    setRegisterData(data)
-                  }else{
+                  if (register) {
+                    setRegisterData(data);
+                  } else {
                     setLoginData(data);
                   }
                 }}
@@ -159,7 +176,7 @@ const LoginRegisterForm = ({ login, isLoading, error, loggedIn, compactMode, wid
             setTransition(false);
             setFirstTime(false);
           },
-          ...(!firstTime && {delay:100})
+          ...(!firstTime && { delay: 100 })
         }}
       />
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "../scss/components/ProjectCard.scss";
 
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 export default function ProjectCard({ uid, name, categories }) {
   return (

@@ -1,11 +1,11 @@
 //import redux
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
 //import reducers
-import coursesReducer from './courses'
-import loginReducer from './login'
+import coursesReducer from "./courses";
+import loginReducer from "./login";
 
 export default combineReducers({
-    courses: coursesReducer,
-    login: loginReducer
-})
+  courses: coursesReducer,
+  login: loginReducer
+});

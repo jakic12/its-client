@@ -14,22 +14,23 @@ export default function SpringSubmitButton({ children }) {
     <Spring
       native
       from={{ scale: 1 }}
-      to={{ scale: pressed ? 0.8 : (hover || focus)? 1.1 : 1 }}
-      config={config.wobbly}
-    >
+      to={{ scale: pressed ? 0.8 : hover || focus ? 1.1 : 1 }}
+      config={config.wobbly}>
       {({ scale }) => (
         <animated.div
           onMouseDown={() => setPressed(true)}
           onClick={() => setPressed(false)}
-          onMouseLeave={() => {setPressed(false); setHover(false)}}
+          onMouseLeave={() => {
+            setPressed(false);
+            setHover(false);
+          }}
           onMouseEnter={() => setHover(true)}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           style={{
             transform: scale.interpolate(scale => `scale(${scale})`),
             display: `inline-block`
-          }}
-        >
+          }}>
           {InputElement}
         </animated.div>
       )}

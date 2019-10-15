@@ -55,7 +55,7 @@ const AnimatedBigHeaderCard = ({
 
   // Animation for opening the body
   //const openBodyRef = useRef();
-  const [cardOpenOverride, setCardOpenOverride] = useState(false)
+  const [cardOpenOverride, setCardOpenOverride] = useState(false);
   const cardOpenStyle = {
     height: formBounds.height + "px",
     padding: bodyPadding
@@ -63,41 +63,46 @@ const AnimatedBigHeaderCard = ({
   const cardClosedStyle = { height: `0px`, padding: `0px` };
   const openBody = useSpring({
     from: cardClosedStyle,
-    to: (cardOpen && !cardOpenOverride) ? cardOpenStyle : cardClosedStyle,
+    to: cardOpen && !cardOpenOverride ? cardOpenStyle : cardClosedStyle,
     delay: 500,
-    config: (cardOpen && !cardOpenOverride) ? config.wobbly : config.slow,
+    config: cardOpen && !cardOpenOverride ? config.wobbly : config.slow,
     ...customOpenBodyAnimationProps
   });
 
   // Animation for showing the errorDiv
-  const [errorDivCloseOverride, setErrorDivCloseOverride] = useState(errorCloseOverride); // override so errorDiv can't open
+  const [errorDivCloseOverride, setErrorDivCloseOverride] = useState(
+    errorCloseOverride
+  ); // override so errorDiv can't open
   const errorDivClosedStyle = { height: `0px` };
   const errorDivOpenStyle = { height: `100px` };
   const displayErrorDiv = useSpring({
     from: errorDivClosedStyle,
     to:
-      error && (!errorDivCloseOverride && !errorCloseOverride) ? errorDivOpenStyle : errorDivClosedStyle
+      error && (!errorDivCloseOverride && !errorCloseOverride)
+        ? errorDivOpenStyle
+        : errorDivClosedStyle
   });
   return (
     <AnimatedBigHeaderCardControls.Provider
       value={{
-        closeCard:(v) => setCardOpenOverride(v),
-        toggleCard:() => setCardOpenOverride(!cardOpenOverride),
-        closeError:(v) => setErrorDivCloseOverride(v),
-        toggleError:() => setErrorDivCloseOverride(!errorDivCloseOverride)
-      }}
-    >
-      <animated.div className="loginCard" style={{width:width}}>
+        closeCard: v => setCardOpenOverride(v),
+        toggleCard: () => setCardOpenOverride(!cardOpenOverride),
+        closeError: v => setErrorDivCloseOverride(v),
+        toggleError: () => setErrorDivCloseOverride(!errorDivCloseOverride)
+      }}>
+      <animated.div className="loginCard" style={{ width: width }}>
         <animated.div className="cardHeader">
           <div className="cardTitle">{head}</div>
         </animated.div>
-        <animated.div className="cardBody" style={(compactMode)? {} : openBody}>
+        <animated.div className="cardBody" style={compactMode ? {} : openBody}>
           <div className="innerBodyElement" {...bindMeasure}>
             {!compactMode && body}
           </div>
         </animated.div>
         <animated.div className="cardFooter"></animated.div>
-        <animated.div className="errorDivContainer" style={(compactMode)? {} : displayErrorDiv}>
+        <animated.div
+          className="errorDivContainer"
+          style={compactMode ? {} : displayErrorDiv}>
           <div className="errorDiv">
             <div className="errorDivText">{!compactMode && error}</div>
           </div>

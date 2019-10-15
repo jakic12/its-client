@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import "./scss/screens/Router.scss";
 
 // import actions
-import { fetchLogout } from './redux/actions/login';
+import { fetchLogout } from "./redux/actions/login";
 
 // import components
 import PrivateRoute from "./components/PrivateRoute";
@@ -35,25 +35,33 @@ const Router = ({ loggedIn, logout }) => {
   return (
     <BrowserRouter>
       <div className="routerWrapper">
-          <Sidebar 
-            hide={!loggedIn}
-            title={<>
+        <Sidebar
+          hide={!loggedIn}
+          title={
+            <>
               <div className="emptyLoginCard"></div>
-              <div className={`loginForm ${loggedIn?``:`open`}`}>
-                  <LoginRegisterForm compactMode={loggedIn} width={loggedIn?`300px` : undefined}/>
+              <div className={`loginForm ${loggedIn ? `` : `open`}`}>
+                <LoginRegisterForm
+                  compactMode={loggedIn}
+                  width={loggedIn ? `300px` : undefined}
+                />
               </div>
             </>
-            }
-            body={<div></div>}
-            footer={<SpringSubmitButton>
+          }
+          body={<div></div>}
+          footer={
+            <SpringSubmitButton>
               <button onClick={() => logout()}>Log out</button>
-            </SpringSubmitButton>}
+            </SpringSubmitButton>
+          }
+        />
+        {loggedIn && (
+          <Route
+            path="/login"
+            exact={true}
+            component={props => <Redirect to="/" />}
           />
-          {loggedIn && (
-            <Route path="/login" exact={true} component={
-              props => <Redirect to="/"/>
-            }/>
-          )}
+        )}
         <PrivateRoute path={"/"} exact={true} component={Dash} />
       </div>
     </BrowserRouter>
@@ -68,9 +76,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout:() => { dispatch(fetchLogout(dispatch)) }
-  }
-}
+    logout: () => {
+      dispatch(fetchLogout(dispatch));
+    }
+  };
+};
 
 function consoleHeader() {
   console.log(
@@ -87,4 +97,7 @@ function consoleHeader() {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Router);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Router);
