@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function ProjectCard({ uid, name, tags, imageSrc }) {
   return (
     <div className="projectCardWrapper">
-      <Link className="projectCard" to={`./course/${uid}`}>
+      <Link className="projectCard" to={`/course/${uid}`}>
         <div className="cardThumbnail">
           <img src={imageSrc} alt="ProjectCard thumbnail" />
         </div>
