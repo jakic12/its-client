@@ -13,6 +13,7 @@
     "react-scripts": "3.1.2",
     "react-spring": "^8.0.27",
     "redux": "^4.0.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "resize-observer-polyfill": "^1.5.1",
     "universal-cookie": "^4.0.2"
@@ -22,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format":"prettier --write \"{,!(node_modules)/**/}*.{js,jsx,html,scss,css}\""
+    "format": "prettier --write \"{,!(node_modules)/**/}*.{js,jsx,html,scss,css}\""
   },
   "eslintConfig": {
     "extends": "react-app"
