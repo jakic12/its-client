@@ -31,37 +31,63 @@ export const fetchCourses = dispatch => {
       dispatch(
         requestCoursesSuccess([
           {
-            uid: `12314124`,
-            name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
-            categories: [`math`, `meth`]
+            categoryName: `Math`,
+            courses: [
+              {
+                uid: `12314124`,
+                name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
+                tags: [`math`, `meth`]
+              },
+              { uid: `123123123`, name: `test2`, tags: [`cs`, `css`] },
+              {
+                uid: `23123`,
+                name: `test3`,
+                tags: [`yeet`, `foo`, `bar`, `yeetus deletus`]
+              },
+              {
+                uid: `1231121234124`,
+                name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
+                tags: [`math`, `meth`]
+              },
+              {
+                uid: `12314124`,
+                name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
+                tags: [`math`, `meth`]
+              },
+              { uid: `123123123`, name: `test2`, tags: [`cs`, `css`] },
+              {
+                uid: `23123`,
+                name: `test3`,
+                tags: [`yeet`, `foo`, `bar`, `yeetus deletus`]
+              },
+              {
+                uid: `1231121234124`,
+                name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
+                tags: [`math`, `meth`]
+              }
+            ]
           },
-          { uid: `123123123`, name: `test2`, categories: [`cs`, `css`] },
           {
-            uid: `23123`,
-            name: `test3`,
-            categories: [`yeet`, `foo`, `bar`, `yeetus deletus`]
-          },
-          {
-            uid: `1231121234124`,
-            name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
-            categories: [`math`, `meth`]
-          },
-          { uid: `123`, name: `test2`, categories: [`cs`, `css`] },
-          {
-            uid: `123141244124`,
-            name: `test3`,
-            categories: [`yeet`, `foo`, `bar`, `yeetus deletus`]
-          },
-          {
-            uid: `214124`,
-            name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
-            categories: [`math`, `meth`]
-          },
-          { uid: `2412`, name: `test2`, categories: [`cs`, `css`] },
-          {
-            uid: `22`,
-            name: `test3`,
-            categories: [`yeet`, `foo`, `bar`, `yeetus deletus`]
+            categoryName: `Random Stuff I found under my couch`,
+            courses: [
+              { uid: `123`, name: `test2`, tags: [`cs`, `css`] },
+              {
+                uid: `123141244124`,
+                name: `test3`,
+                tags: [`yeet`, `foo`, `bar`, `yeetus deletus`]
+              },
+              {
+                uid: `214124`,
+                name: `test1 test1 test1 test1 test1 this is a little more test and a bit more`,
+                tags: [`math`, `meth`]
+              },
+              { uid: `2412`, name: `test2`, tags: [`cs`, `css`] },
+              {
+                uid: `22`,
+                name: `test3`,
+                tags: [`yeet`, `foo`, `bar`, `yeetus deletus`]
+              }
+            ]
           }
         ])
       );

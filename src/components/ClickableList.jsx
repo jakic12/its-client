@@ -12,7 +12,8 @@ export const ListItem = (
   icon,
   exactPath = undefined,
   onClick = undefined,
-  props = undefined
+  props = undefined,
+  rest
 ) => {
   return {
     exactPath,
@@ -20,7 +21,8 @@ export const ListItem = (
     urlName,
     onClick,
     props,
-    icon
+    icon,
+    ...rest
   };
 };
 /**

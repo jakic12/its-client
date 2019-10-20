@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // import external libs
-import { BrowserRouter, Route, Redirect, Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Link, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 // import scss
@@ -14,18 +14,25 @@ import { logoutSuccess } from "./redux/actions/login";
 import PrivateRoute from "./components/PrivateRoute";
 import LoginRegisterForm from "./components/LoginRegisterForm";
 import Sidebar from "./components/Sidebar";
+import ClickableList, { ListItem } from "./components/ClickableList";
 
 // import all the screens
 import Dash from "./screens/Dash";
-import ClickableList, { ListItem } from "./components/ClickableList";
+import ScreenSwitcher from "./screens/ScreenSwitcher";
 
 // import resources
 import { MdHome, MdToday, MdPerson } from "react-icons/md";
 
 const screens = [
-  ListItem(`Dashboard`, `dash`, <MdHome />),
-  ListItem(`Calendar`, `calendar`, <MdToday />),
-  ListItem(`Profile`, `profile`, <MdPerson />)
+  ListItem(`Dashboard`, `dash`, <MdHome />, null, null, null, {
+    component: Dash
+  }),
+  ListItem(`Calendar`, `calendar`, <MdToday />, null, null, null, {
+    component: props => <div {...props}>calendar</div>
+  }),
+  ListItem(`Profile`, `profile`, <MdPerson />, null, null, null, {
+    component: props => <div {...props}>profile</div>
+  })
 ];
 
 /**
@@ -42,7 +49,7 @@ const Router = ({ loggedIn, logout }) => {
   console.log(screen);
   return (
     <BrowserRouter>
-      <div className="routerWrapper">
+      <div className={`routerWrapper${loggedIn ? ` loggedIn` : ``}`}>
         <Sidebar
           hide={!loggedIn}
           title={
@@ -62,7 +69,7 @@ const Router = ({ loggedIn, logout }) => {
               items={screens}
               ItemComponent={Link}
               mapItemPropToComponent={item => ({
-                to: `/` + item.urlName,
+                to: `/` + item.urlName + `/`,
                 style: { textDecoration: `none` }
               })}
             />
@@ -89,7 +96,17 @@ const Router = ({ loggedIn, logout }) => {
             />
           </>
         )}
-        <PrivateRoute path={"/"} exact={true} component={Dash} />
+        {!loggedIn && (
+          <>
+            <Switch>
+              <Route path="/login" exact={true} />
+              <Route path="/" component={props => <Redirect to={`/login`} />} />
+            </Switch>
+          </>
+        )}
+        <div className="mainScreens">
+          {loggedIn && <ScreenSwitcher screens={screens} />}
+        </div>
       </div>
     </BrowserRouter>
   );
