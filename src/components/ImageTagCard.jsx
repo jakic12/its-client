@@ -1,14 +1,14 @@
 import React from "react";
-import "../scss/components/ProjectCard.scss";
+import "../scss/components/ImageTagCard.scss";
 
 import { Link } from "react-router-dom";
 
-export default function ProjectCard({ uid, name, tags, imageSrc }) {
+export default function ImageTagCard({ uid, name, tags, imageSrc }) {
   return (
-    <div className="projectCardWrapper">
-      <Link className="projectCard" to={`/course/${uid}`}>
+    <div className="imageTagCardWrapper">
+      <Link className="imageTagCard" to={`/course/${uid}`}>
         <div className="cardThumbnail">
-          <img src={imageSrc} alt="ProjectCard thumbnail" />
+          <img src={imageSrc} alt="ImageTagCard thumbnail" />
         </div>
         <div className="title">
           <div className="name">
@@ -27,6 +27,6 @@ export default function ProjectCard({ uid, name, tags, imageSrc }) {
   );
 }
 
-export function ProjectCardContainer({ children }) {
-  return <div className={`projectCardContainer`}>{children}</div>;
+export function ImageTagCardContainer({ children }) {
+  return <div className={`imageTagCardContainer`}>{children}</div>;
 }

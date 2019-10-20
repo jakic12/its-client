@@ -2,7 +2,7 @@ $card-width: 300px;
 $card-height: 400px;
 $category-height: 30px;
 
-.projectCardContainer {
+.imageTagCardContainer {
   display: flex;
   flex-direction: row;
   @media screen and (max-width: #{$card-width*2}) {
@@ -11,13 +11,13 @@ $category-height: 30px;
   flex-wrap: wrap;
   justify-content: start;
 
-  .projectCardWrapper {
+  .imageTagCardWrapper {
     align-self: center;
     width: 300px;
     height: 400px;
     box-sizing: border-box;
 
-    .projectCard {
+    .imageTagCard {
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       border-radius: 5px;
       box-sizing: border-box;

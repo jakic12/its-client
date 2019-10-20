@@ -17,15 +17,27 @@ import Sidebar from "./components/Sidebar";
 import ClickableList, { ListItem } from "./components/ClickableList";
 
 // import all the screens
-import Dash from "./screens/Dash";
+import Courses from "./screens/Courses";
 import ScreenSwitcher from "./screens/ScreenSwitcher";
 
 // import resources
-import { MdHome, MdToday, MdPerson } from "react-icons/md";
+import {
+  MdHome,
+  MdToday,
+  MdPerson,
+  MdDescription,
+  MdBusinessCenter
+} from "react-icons/md";
 
 const screens = [
   ListItem(`Dashboard`, `dash`, <MdHome />, null, null, null, {
-    component: Dash
+    component: props => <div {...props}>dash</div>
+  }),
+  ListItem(`Courses`, `course`, <MdDescription />, null, null, null, {
+    component: Courses
+  }),
+  ListItem(`Projects`, `project`, <MdBusinessCenter />, null, null, null, {
+    component: props => <div {...props}>projects</div>
   }),
   ListItem(`Calendar`, `calendar`, <MdToday />, null, null, null, {
     component: props => <div {...props}>calendar</div>
@@ -37,14 +49,14 @@ const screens = [
 
 /**
  * Top level Components that joins together the sidebar and all other screens
- * ========= ROUTER ==========
+ * ========= App ==========
  * |== SIDE == == screens ===|
  * |         | |             |
  * |         | |             |
  * |         | |             |
  * ===========================
  */
-const Router = ({ loggedIn, logout }) => {
+const App = ({ loggedIn, logout }) => {
   const screen = window.location.pathname.match(/[/]?([^/]*)(\/|$)/)[1];
   console.log(screen);
   return (
@@ -144,4 +156,4 @@ function consoleHeader() {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Router);
+)(App);
