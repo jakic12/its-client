@@ -8,6 +8,21 @@ Requires [node](https://nodejs.org/en/)
 \$ `npm i` downloads all the required packages  
 \$ `npm start` starts the development server - check console for further info
 
-### Building for production
+## Building for production
 
 \$ `npm build` builds the project into the build folder
+
+# Contributing
+
+## Code of conduct
+* Prettify your code before every commit.  
+Use Prettier to prettify your code. [Vscode-prettify](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)  
+Set up auto format on save - put this in settings.json
+```json
+"editor.formatOnSave": false,
+"[javascript]": {
+    "editor.formatOnSave": true
+}
+```
+###### maybe 
+* Every developer should make their own branch and communicate to the main branch via pull requests.
