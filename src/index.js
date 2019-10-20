@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Router from "./Router";
+import App from "./App.jsx";
 import * as serviceWorker from "./serviceWorker";
 
 // react notifications
@@ -24,7 +24,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <AlertProvider template={<div></div>}>
-      <Router />
+      <App />
     </AlertProvider>
   </Provider>,
   document.getElementById("root")
