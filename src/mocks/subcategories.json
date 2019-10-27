@@ -1,0 +1,14 @@
+[
+  {
+    "uid": "60dd8de8-a9e6-4714-a123-2ace9c80c00a",
+    "name": "Stevila",
+    "description": "V tem poglavju se bomo ukvarjali z stevili",
+    "category": "287bbe06-914b-464f-9159-87028e9b55e1"
+  },
+  {
+    "uid": "b670a8c3-d6b7-4492-8b16-7b8cca1d0f8f",
+    "name": "Programiranje",
+    "description": "SubCategory2 description",
+    "category": "a92edeb0-66d9-40d5-a0da-18865f3010f6"
+  }
+]

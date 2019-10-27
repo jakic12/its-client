@@ -11,9 +11,9 @@ const ScreenSwitcher = ({ screens }) => {
     <div className={`screenSwitcher`}>
       {screens.map((screen, i) => (
         <Route
-          key={`screen_${screen.urlName}_${i}`}
-          path={screen.exactPath ? screen.exactPath : `/${screen.urlName}`}
-          exact={!!screen.exactPath}
+          key={`screen_${screen.path}_${i}`}
+          path={screen.path}
+          exact={screen.isExact}
           component={screen.component}
         />
       ))}

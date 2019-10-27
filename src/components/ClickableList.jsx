@@ -6,22 +6,24 @@ import { Route } from "react-router-dom";
 // import scss
 import "../scss/components/ClickableList.scss";
 
-export const ListItem = (
+export const ListItem = ({
   label,
-  urlName,
   icon,
-  exactPath = undefined,
-  onClick = undefined,
-  props = undefined,
+  path,
+  onClick,
+  props,
+  component,
+  isExact = true,
   rest
-) => {
+}) => {
   return {
-    exactPath,
     label,
-    urlName,
+    path,
     onClick,
     props,
     icon,
+    component,
+    isExact,
     ...rest
   };
 };
@@ -71,13 +73,13 @@ const ClickableList = ({
             </div>*/
             <Route
               key={`_${i}`}
-              path={item.exactPath ? item.exactPath : `/${item.urlName}`}
-              exact={!!item.exactPath}
+              path={item.path}
+              exact={item.isExact}
               children={({ match }) => out(match)}
             />
           );
         } else {
-          return out(item.urlName === selected);
+          return out(item.path === selected);
         }
       })}
     </div>

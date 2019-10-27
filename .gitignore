@@ -11,6 +11,7 @@
 # dev
 /.vscode
 /.idea
+/.env
 
 # production
 /build

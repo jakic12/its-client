@@ -28,22 +28,38 @@ import {
   MdDescription,
   MdBusinessCenter
 } from "react-icons/md";
+import Profile from "./screens/Profile";
+import Course from "./screens/Course";
+
 
 const screens = [
-  ListItem(`Dashboard`, `dash`, <MdHome />, null, null, null, {
+  ListItem({
+    label: 'Dashboard',
+    path: '/dash',
+    icon: <MdHome/>,
     component: props => <div {...props}>dash</div>
   }),
-  ListItem(`Courses`, `course`, <MdDescription />, null, null, null, {
+  ListItem({
+    label: 'Courses',
+    path: '/course',
+    icon: <MdDescription/>,
     component: Courses
   }),
-  ListItem(`Projects`, `project`, <MdBusinessCenter />, null, null, null, {
-    component: props => <div {...props}>projects</div>
+  ListItem({
+    label: 'Projects',
+    path: '/project',
+    icon: <MdBusinessCenter/>,
+    component: props => <div {...props}>dash</div>
   }),
-  ListItem(`Calendar`, `calendar`, <MdToday />, null, null, null, {
-    component: props => <div {...props}>calendar</div>
+  ListItem({
+    label: 'Profile',
+    path: '/profile',
+    icon: <MdPerson/>,
+    component: Profile
   }),
-  ListItem(`Profile`, `profile`, <MdPerson />, null, null, null, {
-    component: props => <div {...props}>profile</div>
+  ListItem({
+    path: '/course/:uid',
+    component: Course
   })
 ];
 
@@ -78,10 +94,10 @@ const App = ({ loggedIn, logout }) => {
           body={
             <ClickableList
               routerMode={true}
-              items={screens}
+              items={screens.filter(s => s.icon)}
               ItemComponent={Link}
               mapItemPropToComponent={item => ({
-                to: `/` + item.urlName + `/`,
+                to: item.path,
                 style: { textDecoration: `none` }
               })}
             />
@@ -99,25 +115,25 @@ const App = ({ loggedIn, logout }) => {
             <Route
               path="/login"
               exact={true}
-              component={props => <Redirect to="/" />}
+              component={props => <Redirect to="/"/>}
             />
             <Route
               path="/"
               exact={true}
-              component={props => <Redirect to={`/${screens[0].urlName}`} />}
+              component={props => <Redirect to={screens[0].path}/>}
             />
           </>
         )}
         {!loggedIn && (
           <>
             <Switch>
-              <Route path="/login" exact={true} />
-              <Route path="/" component={props => <Redirect to={`/login`} />} />
+              <Route path="/login" exact={true}/>
+              <Route path="/" component={props => <Redirect to={`/login`}/>}/>
             </Switch>
           </>
         )}
         <div className="mainScreens">
-          {loggedIn && <ScreenSwitcher screens={screens} />}
+          {loggedIn && <ScreenSwitcher screens={screens}/>}
         </div>
       </div>
     </BrowserRouter>
@@ -138,7 +154,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-function consoleHeader() {
+function consoleHeader () {
   console.log(
     `%c   /$$   /$$  /$$$$$$  /$$    /$$ /$$$$$$$$       /$$$$$$$$ /$$   /$$ /$$   /$$
   | $$  | $$ /$$__  $$| $$   | $$| $$_____/      | $$_____/| $$  | $$| $$$ | $$

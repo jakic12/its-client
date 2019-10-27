@@ -16,6 +16,7 @@ import ImageTagCard, {
   ImageTagCardContainer
 } from "../components/ImageTagCard";
 
+
 const mapStateToProps = state => {
   const { error, isLoading, courses } = state.courses;
 
@@ -30,17 +31,20 @@ const mapDispatchToProps = dispatch => ({
   fetchCourses: () => fetchCourses(dispatch)
 });
 
+
 class Dash extends Component {
-  componentDidMount() {
+
+  componentDidMount () {
     this.props.fetchCourses();
   }
-  render() {
+
+  render () {
     return (
       <div className="courses">
         {this.props.isLoading && (
           <div className="loading">
             <FadeIn>
-              <RotateLoader />
+              <RotateLoader/>
             </FadeIn>
           </div>
         )}
@@ -76,6 +80,7 @@ class Dash extends Component {
     );
   }
 }
+
 
 export default connect(
   mapStateToProps,
