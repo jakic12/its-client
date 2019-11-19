@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactMde, { commands } from "react-mde";
 import * as Showdown from "showdown";
-import 'styled-components/macro';
+import "styled-components/macro";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import { connect } from "react-redux";
 
@@ -24,30 +24,26 @@ const listCommands = [
   }
 ];
 
-
 class CourseEditor extends Component {
-
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
-      mode: '',
-      selectedTab: 'write',
+      mode: "",
+      selectedTab: "write",
       course: {
-        uid: '',
-        title: '',
-        description: '',
+        uid: "",
+        title: "",
+        description: "",
         tags: [],
         subcategories: [],
-        content: '',
+        content: ""
       }
-    }
+    };
   }
 
-  componentDidMount () {
+  componentDidMount() {}
 
-  }
-
-  render () {
+  render() {
     return (
       <div
         css={`
@@ -55,17 +51,18 @@ class CourseEditor extends Component {
           flex-direction: column;
           flex: 2;
           margin: 80px 150px;
-        `}>
+        `}
+      >
         <ReactMde
           css={`
-              margin: 20px 0;
-              .mde-text {
-                outline: none;
-              }
-              button {
-                outline: none;
-              }
-            `}
+            margin: 20px 0;
+            .mde-text {
+              outline: none;
+            }
+            button {
+              outline: none;
+            }
+          `}
           commands={listCommands}
           value={this.state.course.content}
           onChange={content => console.log(content)}
@@ -78,14 +75,15 @@ class CourseEditor extends Component {
       </div>
     );
   }
-
 }
 
-
-export default connect(state => ({
-  isLoading: state.courses.isLoading,
-  error: state.courses.error,
-  courses: state.courses.courses,
-}), dispatch => ({
-  dispatch
-}))(CourseEditor);
+export default connect(
+  state => ({
+    isLoading: state.courses.isLoading,
+    error: state.courses.error,
+    courses: state.courses.courses
+  }),
+  dispatch => ({
+    dispatch
+  })
+)(CourseEditor);
