@@ -61,9 +61,9 @@ class Dash extends Component {
                       <ImageTagCard
                         key={i}
                         uid={course.uid}
-                        name={course.name}
+                        name={course.title}
                         imageSrc={
-                          course.imageSrc ||
+                          course.image ||
                           "https://venturebeat.com/wp-content/uploads/2014/06/google-design-google-plus-cover-material.jpg?fit=578%2C434&strip=all"
                         }
                         tags={course.tags}

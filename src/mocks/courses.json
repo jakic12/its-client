@@ -1,32 +1,116 @@
 [
   {
-    "uid": "236ccf90-a5e6-48c5-83d9-c6d581cb13f6",
-    "title": "Vizualizacija kompleksnih stevil",
-    "description": "Kaj so kompleksna in realna stevila ? Izdelajte preprosto vizualizacijo...",
-    "tags": [
-      "stevila",
-      "programiranje",
-      "vizualizacije"
-    ],
-    "content": "# Test content dksjadnkand",
-    "created": "2019-10-12",
-    "subcategories": [
-      "60dd8de8-a9e6-4714-a123-2ace9c80c00a",
-      "b670a8c3-d6b7-4492-8b16-7b8cca1d0f8f"
+    "categoryName": "Matematika",
+    "courses": [
+      {
+        "uid": "80b4d03f-2a0d-475a-805b-c0b76e62ec55",
+        "title": "Vizualizacija kompleksnih stevil",
+        "description": "Kaj so kompleksna in realna stevila ? Izdelajte preprosto vizualizacijo...",
+        "tags": [
+          "stevila",
+          "programiranje",
+          "vizualizacije",
+          "javascript"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      },
+      {
+        "uid": "87be84c9-cf5c-4c00-8754-64bcaf17ce28",
+        "title": "Osnove programiranja v Pythony",
+        "description": "Tukaj se boste naucili osnove programskega jezika Python, \n     ki je zelo popularen med mladimi programerji",
+        "tags": [
+          "python",
+          "programiranje"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      },
+      {
+        "uid": "80b4d03f-2a0d-475a-805b-c0b76e62ec55",
+        "title": "Vizualizacija kompleksnih stevil",
+        "description": "Kaj so kompleksna in realna stevila ? Izdelajte preprosto vizualizacijo...",
+        "tags": [
+          "stevila",
+          "programiranje",
+          "vizualizacije",
+          "javascript"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      },
+      {
+        "uid": "87be84c9-cf5c-4c00-8754-64bcaf17ce28",
+        "title": "Osnove programiranja v Pythony",
+        "description": "Tukaj se boste naucili osnove programskega jezika Python, \n     ki je zelo popularen med mladimi programerji",
+        "tags": [
+          "python",
+          "programiranje"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      }
     ]
   },
   {
-    "uid": "3a340acd-e028-411a-ba16-c76869313a4c",
-    "title": "Osnove programiranja v Pythony",
-    "description": "Tukaj se boste naucili osnove programskega jezika Python, ki je zelo popularen med mladimi programerji",
-    "tags": [
-      "python",
-      "programiranje"
-    ],
-    "content": "# Test content",
-    "created": "2019-10-12",
-    "subcategories": [
-      "b670a8c3-d6b7-4492-8b16-7b8cca1d0f8f"
+    "categoryName": "Racunalnistvo",
+    "courses": [
+      {
+        "uid": "80b4d03f-2a0d-475a-805b-c0b76e62ec55",
+        "title": "Vizualizacija kompleksnih stevil",
+        "description": "Kaj so kompleksna in realna stevila ? Izdelajte preprosto vizualizacijo...",
+        "tags": [
+          "stevila",
+          "programiranje",
+          "vizualizacije",
+          "javascript"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      },
+      {
+        "uid": "87be84c9-cf5c-4c00-8754-64bcaf17ce28",
+        "title": "Osnove programiranja v Pythony",
+        "description": "Tukaj se boste naucili osnove programskega jezika Python, \n     ki je zelo popularen med mladimi programerji",
+        "tags": [
+          "python",
+          "programiranje"
+        ],
+        "content": "# Test content",
+        "created": "2019-11-03",
+        "visible": true
+      },
+      {
+        "uid": "80b4d03f-2a0d-475a-805b-c0b76e62ec55",
+        "title": "Vizualizacija kompleksnih stevil",
+        "description": "Kaj so kompleksna in realna stevila ? Izdelajte preprosto vizualizacijo...",
+        "tags": [
+          "stevila",
+          "programiranje",
+          "vizualizacije",
+          "javascript"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      },
+      {
+        "uid": "87be84c9-cf5c-4c00-8754-64bcaf17ce28",
+        "title": "Osnove programiranja v Pythony",
+        "description": "Tukaj se boste naucili osnove programskega jezika Python, \n     ki je zelo popularen med mladimi programerji",
+        "tags": [
+          "python",
+          "programiranje"
+        ],
+        "content": "<p align=\"center\"> <img src=\"https://i.ibb.co/YXHPYQY/its-logo-3.png\" width=\"240\" /> </p>\n\n# ITS server app\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)\n![Heroku](https://heroku-badge.herokuapp.com/?app=rd-its)\n\nView REST API documentation [here](https://stoplight.io/p/docs/gh/bartolomej/its-server).\n\n## Setup\n\nTo install and work on ITS run:\n1. `git clone https://github.com/bartolomej/its-server`\n2. `cd its-server`\n3. `npm install`\n4. [configure environment variables](https://www.npmjs.com/package/dotenv#usage)\n5. `npm run test-data`\n6. `npm start`",
+        "created": "2019-11-03",
+        "visible": true
+      }
     ]
   }
 ]
