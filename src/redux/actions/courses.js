@@ -1,5 +1,7 @@
 import { host } from "../../app.json";
+import { get } from "../../utils/request";
 import courses from "../../mocks/courses.json";
+
 
 export const FETCH_COURSES_REQUEST = "FETCH_COURSES_REQUEST";
 export const FETCH_COURSES_FAILURE = "FETCH_COURSES_FAILURE";
@@ -37,8 +39,3 @@ export const fetchCourses = async dispatch => {
     dispatch(requestCoursesFailed(e));
   }
 };
-
-async function get (path) {
-  const response = await fetch(host + path);
-  return await response.json();
-}

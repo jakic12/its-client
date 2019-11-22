@@ -1,0 +1,18 @@
+{
+  "uid": "0551514d-f5d1-476f-b619-3e15856a0e75",
+  "gender": "female",
+  "username": "brownbird631",
+  "birthDate": "1985-02-28T15:52:53.893Z",
+  "email": "marina.hoes@example.com",
+  "website": "brownbird631-example.com",
+  "interests": [
+    "programming",
+    "design",
+    "math"
+  ],
+  "avatar": "https://randomuser.me/api/portraits/med/women/47.jpg",
+  "createdDate": "2008-07-04T06:54:08.000Z",
+  "deactivatedDate": null,
+  "status": "ACTIVE",
+  "type": "USER"
+}

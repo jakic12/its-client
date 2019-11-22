@@ -39,6 +39,13 @@ class Dash extends Component {
   }
 
   render () {
+    if (this.props.error) {
+      return (
+        <div className="categories">
+          {this.props.error.toString()}
+        </div>
+      )
+    }
     return (
       <div className="courses">
         {this.props.isLoading && (

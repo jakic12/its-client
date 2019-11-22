@@ -3,10 +3,11 @@
 ## Basic setup
 
 Requires [node](https://nodejs.org/en/)  
-\$ `git clone https://github.com/jakic12/its-client.git` to clone the repo  
-\$ `cd its-client` to go into the folder  
-\$ `npm i` downloads all the required packages  
-\$ `npm start` starts the development server - check console for further info
+1. `git clone https://github.com/jakic12/its-client.git` to clone the repo  
+2. `cd its-client` to go into the folder  
+3. `npm i` downloads all the required packages  
+4.  create `env.development.local` file to override existing env variables in `.env.development`. Find out more [here](https://create-react-app.dev/docs/adding-custom-environment-variables#adding-development-environment-variables-in-env).
+5. `npm start` starts the development server - check console for further info
 
 ## Building for production
 

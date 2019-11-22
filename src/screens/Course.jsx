@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as Showdown from "showdown";
 import 'styled-components/macro';
 import { connect } from "react-redux";
+import { fetchCourses } from "../redux/actions/courses";
 
 // TODO: include LaTeX parsing (https://github.com/obedm503/showdown-katex)
 
@@ -29,12 +30,16 @@ class CourseEditor extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount = async () => {
     const courseUid = this.props.match.params.uid;
-    const course = getCourse(courseUid, this.props.courses);
+    let course = getCourse(courseUid, this.props.courses);
+    if (course === undefined) {
+      await fetchCourses(this.props.dispatch);
+      course = getCourse(courseUid, this.props.courses);
+    }
     this.setState({course});
     this.setState({html: converter.makeHtml(course.content)});
-  }
+  };
 
   render () {
     return (
@@ -44,8 +49,16 @@ class CourseEditor extends Component {
           flex-direction: column;
           height: 100%;
           padding: 20px;
+          overflow-y: auto;
         `}>
-        <div dangerouslySetInnerHTML={{__html: this.state.html}}/>
+        <div
+          dangerouslySetInnerHTML={{__html: this.state.html}}
+          css={`
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+          `}
+        />
       </div>
     );
   }

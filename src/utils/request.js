@@ -1,8 +1,5 @@
-const host = 'http://localhost:3000';
-
-
 export async function put(url = '', data = {}) {
-  const response = await fetch(host + url, {
+  const response = await fetch(process.env.REACT_APP_API_HOST + url, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -14,7 +11,7 @@ export async function put(url = '', data = {}) {
 }
 
 export async function post(url = '', data = {}) {
-  const response = await fetch(host + url, {
+  const response = await fetch(process.env.REACT_APP_API_HOST + url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -26,18 +23,24 @@ export async function post(url = '', data = {}) {
 }
 
 export async function get(url) {
-  const response = await fetch(host + url, {
+  console.log('process.env.REACT_APP_API_HOST ', process.env.REACT_APP_API_HOST)
+  const response = await fetch(process.env.REACT_APP_API_HOST + url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
   });
   await validateErrors(response);
-  return await response.json();
+  try {
+    return await response.json();
+  } catch (e) {
+    console.error('error: ', e);
+    throw new Error(`Unexpected error`);
+  }
 }
 
 export async function remove(url) {
-  const response = await fetch(host + url, {
+  const response = await fetch(process.env.REACT_APP_API_HOST + url, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
