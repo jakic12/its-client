@@ -15,6 +15,7 @@
   }
 
   .cardBody {
+    box-sizing: content-box;
     overflow: hidden;
     background: lightGrey;
     display: flex;
