@@ -53,11 +53,6 @@ class CourseEditor extends Component {
         `}>
         <div
           dangerouslySetInnerHTML={{__html: this.state.html}}
-          css={`
-            width: 60%;
-            margin-left: auto;
-            margin-right: auto;
-          `}
         />
       </div>
     );

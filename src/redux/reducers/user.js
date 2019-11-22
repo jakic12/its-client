@@ -11,6 +11,7 @@ import {
 const initialState = {
   isLoading: false,
   error: null,
+  uid: null,
   profile: null
 };
 
@@ -44,7 +45,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        profile: action.user
+        profile: action.payload
       };
     case UPDATE_USER_FAILED:
       return {

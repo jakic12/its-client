@@ -33,6 +33,10 @@ import Course from "./screens/Course";
 
 
 const screens = [
+  /**
+   * DASHBOARD:
+   * - show user event history ?
+   */
   ListItem({
     label: 'Dashboard',
     path: '/dash',
@@ -82,7 +86,7 @@ const App = ({ loggedIn, logout }) => {
           hide={!loggedIn}
           title={
             <>
-              <div className="emptyLoginCard"></div>
+              <div className="emptyLoginCard"/>
               <div className={`loginForm ${loggedIn ? `` : `open`}`}>
                 <LoginRegisterForm
                   compactMode={loggedIn}
