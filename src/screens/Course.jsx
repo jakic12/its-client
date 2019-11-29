@@ -4,13 +4,12 @@ import 'styled-components/macro';
 import { connect } from "react-redux";
 import { fetchCourses } from "../redux/actions/courses";
 
-// TODO: include LaTeX parsing (https://github.com/obedm503/showdown-katex)
 
 const converter = new Showdown.Converter({
   tables: true,
   simplifiedAutoLink: true,
   strikethrough: true,
-  tasklists: true
+  tasklists: true,
 });
 
 class CourseEditor extends Component {

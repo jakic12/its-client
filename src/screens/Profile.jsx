@@ -88,6 +88,38 @@ class Profile extends Component {
 
 }
 
+const Container = styled.div`
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
+const Header = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+const UserDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+`;
+
+const Body = styled.div`
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Avatar = styled.img`
+  border-radius: 10%;
+`;
+
 export default connect(
   state => ({
     isLoading: state.user.isLoading,

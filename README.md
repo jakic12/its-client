@@ -6,8 +6,18 @@ Requires [node](https://nodejs.org/en/)
 1. `git clone https://github.com/jakic12/its-client.git` to clone the repo  
 2. `cd its-client` to go into the folder  
 3. `npm i` downloads all the required packages  
-4.  create `env.development.local` file to override existing env variables in `.env.development`. Find out more [here](https://create-react-app.dev/docs/adding-custom-environment-variables#adding-development-environment-variables-in-env).
+4.  setup development environment
 5. `npm start` starts the development server - check console for further info
+
+## Scripts
+
+- `npm start-offline` starts the app in development - uses local mock data as input
+- `npm start` starts the app in development - fetches the data from the server
+
+## Environment setup
+
+Create `.env.development.local` file to override environmental variables for development defined in `.env.development`.
+Find out more [here](https://create-react-app.dev/docs/adding-custom-environment-variables#adding-development-environment-variables-in-env).
 
 ## Building for production
 

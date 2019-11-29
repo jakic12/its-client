@@ -58,7 +58,7 @@ class Dash extends Component {
         {!this.props.error && !this.props.isLoading && this.props.courses && (
           <div className="categories">
             {this.props.courses.map(category => (
-              <div className="category">
+              <div className="category" key={category.uid}>
                 <div className="header">
                   <h1>{category.categoryName}</h1>
                 </div>
