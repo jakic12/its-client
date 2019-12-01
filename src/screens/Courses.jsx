@@ -3,19 +3,16 @@ import React, { Component } from "react";
 // external libs
 import { RotateLoader } from "react-spinners";
 import FadeIn from "react-fade-in";
+import styled from "styled-components";
 
 //redux
 import { connect } from "react-redux";
 import { fetchCourses } from "../redux/actions/courses";
 
-//styles
-import "../scss/screens/Dash.scss";
-
 //components
 import ImageTagCard, {
   ImageTagCardContainer
 } from "../components/ImageTagCard";
-
 
 const mapStateToProps = state => {
   const { error, isLoading, courses } = state.courses;
@@ -31,65 +28,88 @@ const mapDispatchToProps = dispatch => ({
   fetchCourses: () => fetchCourses(dispatch)
 });
 
-
 class Dash extends Component {
-
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchCourses();
   }
 
-  render () {
+  render() {
     if (this.props.error) {
-      return (
-        <div className="categories">
-          {this.props.error.toString()}
-        </div>
-      )
+      return <div className="categories">{this.props.error.toString()}</div>;
     }
     return (
-      <div className="courses">
+      <Wrapper>
         {this.props.isLoading && (
-          <div className="loading">
+          <LoadingContainer>
             <FadeIn>
-              <RotateLoader/>
+              <RotateLoader />
             </FadeIn>
-          </div>
+          </LoadingContainer>
         )}
         {!this.props.error && !this.props.isLoading && this.props.courses && (
-          <div className="categories">
-            {this.props.courses.map(category => (
-              <div className="category" key={category.uid}>
-                <div className="header">
-                  <h1>{category.categoryName}</h1>
+          <Container>
+            <Categories>
+              {this.props.courses.map(category => (
+                <div className="category" key={category.uid}>
+                  <CategoryHeader>
+                    <h1>{category.categoryName}</h1>
+                  </CategoryHeader>
+                  <div className="body">
+                    <ImageTagCardContainer>
+                      {category.courses.map((course, i) => (
+                        <ImageTagCard
+                          key={i}
+                          uid={course.uid}
+                          name={course.title}
+                          imageSrc={
+                            course.image ||
+                            "https://venturebeat.com/wp-content/uploads/2014/06/google-design-google-plus-cover-material.jpg?fit=578%2C434&strip=all"
+                          }
+                          tags={course.tags}
+                        />
+                      ))}
+                    </ImageTagCardContainer>
+                  </div>
                 </div>
-                <div className="body">
-                  <ImageTagCardContainer>
-                    {category.courses.map((course, i) => (
-                      <ImageTagCard
-                        key={i}
-                        uid={course.uid}
-                        name={course.title}
-                        imageSrc={
-                          course.image ||
-                          "https://venturebeat.com/wp-content/uploads/2014/06/google-design-google-plus-cover-material.jpg?fit=578%2C434&strip=all"
-                        }
-                        tags={course.tags}
-                      />
-                    ))}
-                  </ImageTagCardContainer>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </Categories>
+          </Container>
         )}
         {this.props.error && <div>{this.props.error}</div>}
-      </div>
+      </Wrapper>
     );
   }
 }
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dash);
+const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+`;
+
+const Categories = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const LoadingContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CategoryHeader = styled.div`
+  padding-left: 30px;
+`;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dash);
