@@ -31,39 +31,39 @@ import {
 import Profile from "./screens/Profile";
 import Course from "./screens/Course";
 
-
 const screens = [
   /**
    * DASHBOARD:
    * - show user event history ?
    */
   ListItem({
-    label: 'Dashboard',
-    path: '/dash',
-    icon: <MdHome/>,
+    path: "/course/:uid",
+    isExact: true,
+    component: Course
+  }),
+  ListItem({
+    label: "Dashboard",
+    path: "/dash",
+    icon: <MdHome />,
     component: props => <div {...props}>dash</div>
   }),
   ListItem({
-    label: 'Courses',
-    path: '/course',
-    icon: <MdDescription/>,
+    label: "Courses",
+    path: "/course",
+    icon: <MdDescription />,
     component: Courses
   }),
   ListItem({
-    label: 'Projects',
-    path: '/project',
-    icon: <MdBusinessCenter/>,
+    label: "Projects",
+    path: "/project",
+    icon: <MdBusinessCenter />,
     component: props => <div {...props}>dash</div>
   }),
   ListItem({
-    label: 'Profile',
-    path: '/profile',
-    icon: <MdPerson/>,
+    label: "Profile",
+    path: "/profile",
+    icon: <MdPerson />,
     component: Profile
-  }),
-  ListItem({
-    path: '/course/:uid',
-    component: Course
   })
 ];
 
@@ -86,7 +86,7 @@ const App = ({ loggedIn, logout }) => {
           hide={!loggedIn}
           title={
             <>
-              <div className="emptyLoginCard"/>
+              <div className="emptyLoginCard" />
               <div className={`loginForm ${loggedIn ? `` : `open`}`}>
                 <LoginRegisterForm
                   compactMode={loggedIn}
@@ -119,25 +119,25 @@ const App = ({ loggedIn, logout }) => {
             <Route
               path="/login"
               exact={true}
-              component={props => <Redirect to="/"/>}
+              component={props => <Redirect to="/" />}
             />
             <Route
               path="/"
               exact={true}
-              component={props => <Redirect to={screens[0].path}/>}
+              component={props => <Redirect to={screens[0].path} />}
             />
           </>
         )}
         {!loggedIn && (
           <>
             <Switch>
-              <Route path="/login" exact={true}/>
-              <Route path="/" component={props => <Redirect to={`/login`}/>}/>
+              <Route path="/login" exact={true} />
+              <Route path="/" component={props => <Redirect to={`/login`} />} />
             </Switch>
           </>
         )}
         <div className="mainScreens">
-          {loggedIn && <ScreenSwitcher screens={screens}/>}
+          {loggedIn && <ScreenSwitcher screens={screens} />}
         </div>
       </div>
     </BrowserRouter>
@@ -158,7 +158,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-function consoleHeader () {
+function consoleHeader() {
   console.log(
     `%c   /$$   /$$  /$$$$$$  /$$    /$$ /$$$$$$$$       /$$$$$$$$ /$$   /$$ /$$   /$$
   | $$  | $$ /$$__  $$| $$   | $$| $$_____/      | $$_____/| $$  | $$| $$$ | $$
@@ -173,7 +173,4 @@ function consoleHeader () {
   );
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

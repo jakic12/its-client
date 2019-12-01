@@ -13,7 +13,7 @@ export const ListItem = ({
   onClick,
   props,
   component,
-  isExact = true,
+  isExact,
   rest
 }) => {
   return {
@@ -48,6 +48,7 @@ const ClickableList = ({
   mapItemPropToComponent
 }) => {
   console.log(ItemComponent);
+  console.log(items);
   return (
     <div className="clickableList">
       {items.map((item, i) => {
